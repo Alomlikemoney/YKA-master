@@ -1,0 +1,12 @@
+{
+    "android": {
+      "release": {
+        "keystore": "C:/Users/malon/Documents/YAKATOVANDA/YAKATOVANDA/my-release-key.jks",
+        "storePassword": "alomlikeg1ming",
+        "alias": "yakatovanda",
+        "password" : "alomlikeg1ming",
+        "keystoreType": ""
+      }
+    }
+  }
+  

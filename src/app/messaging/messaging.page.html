@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar class="grad-blue" style="background: url('../assets/dd.png') no-repeat center center / cover;">
+    <ion-title>
+      Messagerie
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Liste des messages -->
+  <ion-list>
+    <ion-item *ngFor="let message of messages$ | async">
+      {{ message.sender }}: {{ message.content }}
+    </ion-item>
+  </ion-list>
+
+  <!-- Formulaire pour envoyer un nouveau message -->
+  <ion-item>
+    <ion-input [(ngModel)]="newMessage" placeholder="Nouveau message"></ion-input>
+    <ion-button expand="full" (click)="sendMessage()">Envoyer</ion-button>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,50 @@
+.grad-blue {
+    --background: linear-gradient(to right, #007bff, #2196F3);
+    color: white; /* Couleur du texte */
+  }
+
+.left-name{
+float: left;
+margin-right: 10px;
+  }
+
+  .paragraph-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Hauteur de 100% de la vue, pour centrer verticalement */
+    background-color: #000; /* Fond sombre */
+  }
+  
+  .paragraph {
+    color: #ccc; /* Couleur du texte gris clair */
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fond sombre semi-transparent */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Ombre légère */
+  }
+  
+  /* CSS */
+.custom-button {
+    background-color: linear-gradient(to right, #003366, #336699);
+    color: white; /* Couleur du texte en blanc */
+  }
+
+  ion-avatar {
+    width: 100px; /* Définissez la largeur souhaitée */
+    height: 100px; /* Définissez la hauteur souhaitée */
+  }
+  /* Ajoutez ceci pour définir l'image comme arrière-plan de l'en-tête */
+// ion-header {
+//   background-image: url('../assets/dd.png');
+//   background-size: cover; /* Ajustez ceci en fonction de la taille de votre image */
+//   background-repeat: no-repeat;
+//   background-position: center center;
+// }
+#h-img {
+  width: 5%;
+  height: 5%;
+  border-radius: 10px; /* Vous pouvez ajuster la valeur du rayon pour définir le niveau d'arrondi */
+}

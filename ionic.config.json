@@ -1,0 +1,7 @@
+{
+  "name": "YAKATOVANDA",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar class="grad-blue">
+    <ion-title>
+    Annonces
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mes Annonces</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+
+
+    
+    <ion-card *ngFor="let annonce of confirmedFormDatas"  [id]="annonce.documentId">
+
+      <!-- <ion-button color="danger" (click)="deleteIonCard(annonce.documentId)">Supprimer</ion-button> -->
+      <!-- Affichez les données de l'annonce ici -->
+       <!-- Afficher les images de profil depuis Firebase Firestore -->
+       <ion-grid>
+        <ion-row>
+          <ion-col size="7" *ngFor="let imageUrlProfile of annonce.userImageUrls">
+            <ion-avatar>
+              <img [src]="imageUrlProfile" alt="Image de profil">      
+            </ion-avatar>
+            
+          </ion-col>
+        
+        </ion-row>
+        <ion-badge class="grad-blue">
+         {{ annonce.Nomvendeur }}
+        </ion-badge>
+      </ion-grid>
+
+
+
+       <!-- Affichez les images depuis Firebase Storage -->
+       <ion-row>
+        <ion-col *ngFor="let imageUrl of annonce.images" >
+          <img  [src]="imageUrl" alt="Image de l'annonce" (click)="previewImage(imageUrl)">
+          
+        </ion-col>
+      </ion-row>
+
+      <ion-card-title>Informations de l'annonce</ion-card-title>
+      <!-- <p>Identifiant de l'annonce : {{ annonce.id }}</p>  -->
+      <p>Description : {{ annonce.description }}</p>
+      <p>Téléphone 1 : {{ annonce.phone1 }}</p>
+      <p>Téléphone 2 : {{ annonce.phone2 }}</p>
+      <p>Téléphone 3 : {{ annonce.phone3 }}</p>
+      <p>Statut : {{ annonce.statut }}</p>
+      <p>Ville : {{ annonce.ville }}</p>
+      <p>Pays : {{ annonce.pays }}</p>
+      <p>Quartier : {{ annonce.quartier }}</p>
+      <p>Référence annexes : {{ annonce.referenceAnnexes }}</p>
+      <p>Prix du bien en FCFA : {{ annonce.prix }}</p>
+      <p>Statut du prix : {{ annonce.prixStatus }}</p>
+      <p>Date de création de l'annonce : {{ annonce.dateAnciennete }}</p>
+      <p>Taille du bien : {{ annonce.taille }}</p>
+      <p>Référence annexes du bien : {{ annonce.referenceAnnexesBien }}</p>
+        <!-- Ajoutez un lien vers la page "gest-annonce" avec les détails de l'annonce -->
+    </ion-card>
+  </ion-content>
+  
+</ion-content>
