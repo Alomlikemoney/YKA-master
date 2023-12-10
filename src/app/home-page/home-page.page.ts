@@ -40,7 +40,11 @@ export class HomePage {
   uniqueIdCounter: number = 0;
   uniqueCardIds: Set<number> = new Set<number>();
   selectedCards: any[] = []; 
-
+  slideOpts = {  
+    initialSlide: 1,  
+    speed: 300,  
+    effect: 'flip',  
+  }; 
 
   constructor(private router: Router,
     private route: ActivatedRoute,

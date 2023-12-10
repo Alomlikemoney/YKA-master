@@ -42,7 +42,15 @@ const routes: Routes = [
   {
     path: 'mes-annonces',
     loadChildren: () => import('./mes-annonces/mes-annonces.module').then( m => m.MesAnnoncesPageModule)
-  }
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
+  },
+  {
+    path: 'send-message',
+    loadChildren: () => import('./send-message/send-message.module').then( m => m.SendMessagePageModule)
+  },
 ],
 },
 {
@@ -62,6 +70,7 @@ const routes: Routes = [
     path: 'terms-and-conditions',
     loadChildren: () => import('./terms-and-conditions/terms-and-conditions.module').then( m => m.TermsAndConditionsPageModule)
   },
+
  
  
 

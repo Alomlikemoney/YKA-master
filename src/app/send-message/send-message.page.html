@@ -1,0 +1,26 @@
+<!-- send-message.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Envoyer un Message</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label>Choisir un utilisateur</ion-label>
+      <ion-select [(ngModel)]="selectedUser">
+        <ion-select-option *ngFor="let user of users" >
+          {{ user.Nomvendeur }} 
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Message</ion-label>
+      <ion-textarea [(ngModel)]="message"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="sendMessage()">Envoyer</ion-button>
+</ion-content>

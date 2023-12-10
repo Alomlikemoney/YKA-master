@@ -17,7 +17,7 @@ import { ReversePipe } from './mes-annonces/reverse.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import {TabsComponent} from './tabs/tabs.component'
 import { Storage } from '@ionic/storage';
-
+import { AnnonceService } from './annonce-service.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDo1YhZqucB1C9xdiDg_U4fh4_n5KyNpAg",
@@ -35,6 +35,8 @@ export const firebaseConfig = {
   imports: [AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
+    IonicModule,
+    IonicModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     IonicStorageModule.forRoot(),

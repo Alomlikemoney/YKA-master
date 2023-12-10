@@ -22,6 +22,7 @@
 <ion-content class="ion-padding">
   
   <h1>Actualités</h1>
+  
   <ion-card *ngFor="let annonce of annonces$ | async">
     <ion-card-header>
     
@@ -75,4 +76,5 @@
     <ion-button (click)="selectCard(annonce)">Sélectionner</ion-button> </a>
     </ion-card-content>
   </ion-card>
+
 </ion-content>

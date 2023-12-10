@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage-angular';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { Auth, GoogleAuthProvider } from 'firebase/auth';
+import 'firebase/auth';
+import * as firebase from 'firebase/compat';
 
 @Component({
   selector: 'app-messaging',
@@ -10,48 +12,41 @@ import { Observable } from 'rxjs';
   styleUrls: ['./messaging.page.scss'],
 })
 export class MessagingPage implements OnInit {
-  selectedUserEmail: string | undefined;
+  messages: Observable<any[]> | undefined;
   newMessage: string = '';
-  messages$: Observable<any[]> | undefined;
+  auth: any;
 
   constructor(
-    private storage: Storage,
-    private afDB: AngularFireDatabase,
-    private afAuth: AngularFireAuth
-  ) {
-    this.storage.create();
-  }
+    private afAuth: AngularFireAuth,
+    private firestore: AngularFirestore
+  ) {}
 
   ngOnInit() {
-    // Récupérez l'e-mail de l'utilisateur sélectionné
-    this.storage.get('selectedUserEmail').then((email) => {
-      this.selectedUserEmail = email;
-      // Utilisez l'e-mail pour charger la liste des messages avec cet utilisateur
-      this.messages$ = this.afDB.list(`/messages/${this.selectedUserEmail}`).valueChanges();
-    });
+    this.messages = this.firestore.collection('messages').valueChanges();
   }
 
-  sendMessage() {
-    // Vérifiez que le message n'est pas vide
-    if (this.newMessage.trim() !== '') {
-      // Accédez à la propriété 'email' une fois la Promise résolue
-      this.afAuth.currentUser.then(user => {
-        if (user) {
-          // Envoyez le message à l'utilisateur sélectionné
-          this.afDB.list(`/messages/${this.selectedUserEmail}`).push({
-            sender: user.email,
-            content: this.newMessage,
-          });
-  
-          // Effacez le champ de saisie après l'envoi du message
-          this.newMessage = '';
-        }
+  async sendMessage() {
+    const user = await this.afAuth.currentUser;
+    if (user) {
+      this.firestore.collection('messages').add({
+        text: this.newMessage,
+        userId: user.uid,
+        timestamp: new Date(),
       });
-    
-  
-  
-      // Effacez le champ de saisie après l'envoi du message
       this.newMessage = '';
+    }
+  }
+
+  async signOut() {
+    await this.afAuth.signOut();
+  }
+
+  async signIn() {
+    try {
+      const provider = new GoogleAuthProvider();
+      await this.auth.signInWithPopup(provider);
+    } catch (error) {
+      console.error('Erreur de connexion avec Google', error);
     }
   }
 }

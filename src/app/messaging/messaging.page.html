@@ -1,22 +1,26 @@
 <ion-header>
-  <ion-toolbar class="grad-blue" style="background: url('../assets/dd.png') no-repeat center center / cover;">
-    <ion-title>
-      Messagerie
-    </ion-title>
+  <ion-toolbar>
+    <ion-title>Messagerie</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()">Déconnexion</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <!-- Liste des messages -->
-  <ion-list>
-    <ion-item *ngFor="let message of messages$ | async">
-      {{ message.sender }}: {{ message.content }}
+<ion-content class="ion-padding">
+  <ion-list *ngFor="let message of messages | async">
+    <ion-item>
+      <ion-label>{{ message.text }}</ion-label>
     </ion-item>
   </ion-list>
 
-  <!-- Formulaire pour envoyer un nouveau message -->
   <ion-item>
-    <ion-input [(ngModel)]="newMessage" placeholder="Nouveau message"></ion-input>
-    <ion-button expand="full" (click)="sendMessage()">Envoyer</ion-button>
+    <ion-input
+      [(ngModel)]="newMessage"
+      placeholder="Nouveau message"
+    ></ion-input>
+    <ion-button (click)="sendMessage()">Envoyer</ion-button>
   </ion-item>
+
+  <ion-button (click)="signIn()">Se connecter avec Google</ion-button>
 </ion-content>

@@ -60,7 +60,11 @@ export class CreateAnnoncePage {
   afSG: any;
   userImageUrls: string | undefined;
   documentIds: string[] = [];
-  sortedLocalAnnouncements: any[] = [];;
+  sortedLocalAnnouncements: any[] = [];
+  // Dans votre classe CreateAnnoncePage
+likes: number = 0;
+comments: any[] = [];
+
 
   constructor(
     private storage: Storage,
@@ -242,6 +246,13 @@ export class CreateAnnoncePage {
     // Ajoutez les données confirmées au service Firebase
     this.newsService.addNews(formData);
     // Stockez l'ID du document Firestore localement
+      // Initialisez les likes et les commentaires à zéro
+  formData.likes = 0;
+  formData.comments = [];
+
+  // Ajoutez les données confirmées au service
+  this.annonceService.addConfirmedFormData(formData, cardId); // Passez formData et cardId
+
     this.documentIds.push(cardId);
 
     // Ajoutez l'annonce à la liste locale

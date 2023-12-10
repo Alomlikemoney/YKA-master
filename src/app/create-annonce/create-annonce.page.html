@@ -27,7 +27,9 @@
       </ion-row>
     </ion-grid>
     <!-- Bouton de suppression -->
-    <ion-card-content> <ion-button color="danger" (click)="deleteConfirmedForm(formData)">Supprimer</ion-button> 
+    <ion-card-content>
+      
+      <ion-button color="danger" (click)="deleteConfirmedForm(formData)">Supprimer</ion-button> 
       <ion-card-title>Informations de l'annonce</ion-card-title>
       <ion-list>
         <ion-item>
@@ -127,7 +129,8 @@
         </ion-buttons>
         <ion-title>Créer votre annonce</ion-title>
         <ion-buttons slot="end">
-          <ion-button [strong]="true" [disabled]="formConfirmed" (click)="confirm()">Confirmer</ion-button>
+          <ion-button [strong]="true" [disabled]="formConfirmed" id="open-loading" (click)="confirm()">Confirmer</ion-button>
+          <ion-loading trigger="open-loading" message="Veuillez Patienter..." duration="6000"></ion-loading>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
